@@ -42,9 +42,25 @@ function App() {
     console.log(solicitacao);
   }
 
-  function tempoEstimado() {
-    if (tipoSolicitacao === 'Sugestão') return 2;
-    return 3;
+  function infoEnvio() {
+    function gerarProtocolo() {
+      return Math.random() * (10000 - 1000) + 1000;
+    }
+
+    if (tipoSolicitacao === 'Sugestão') {
+      return {
+        class: 'alert alert-success p-2',
+        time: '3',
+        tipo: 'sugestão',
+        protocolo: gerarProtocolo(),
+      }
+    } 
+    return {
+      class: 'alert alert-warning p-2',
+      time: '2',
+      tipo: 'reclamação',
+      protocolo: gerarProtocolo(),
+    }
   }
 
   return (
@@ -52,13 +68,15 @@ function App() {
       <Menu/>
       <div className="container text-start bg-light p-3 w-50">
         <h1>Suporte Universitário</h1>
+        
         <p>Olá, seja bem-vindo à nossa página de suporte! Para abrir uma solicitação preencha o formulário abaixo: </p>
 
         <form className="form">
           {controlador &&
-            <div className="alert alert-success p-2">
+            <div className={infoEnvio().class}>
               <h3>Solicitação enviada com sucesso!</h3>
-              <p>Tempo estimado de resposta: {tempoEstimado()} dias.</p>
+              <p>O número do seu protocolo é: {infoEnvio().protocolo}</p>
+              <p>A sua <strong>{infoEnvio().tipo}</strong> será respondida em {infoEnvio().time} dias.</p>
             </div>
           }
           <p><label htmlFor="nome">Nome:</label><br />
