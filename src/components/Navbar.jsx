@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
-function Menu() {
+function Navbar() {
   return (
     <header>
-      <nav className="pt-1 navbar navbar-expand-lg navbar-dark text-bg-dark w-50 container text-center" id="navbar">
+      <nav className="pt-1 navbar navbar-expand-lg navbar-dark text-bg-dark w-50 container text-center rounded-2" id="navbar">
         <div className="container-fluid">
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -13,16 +14,14 @@ function Menu() {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
               <li className="nav-item">
-                <a className="nav-link active link-light link-menu" aria-current="page" href="http://localhost:3000"><i className="bi bi-book me-2"></i>UniBook
-                </a>
+                <Link to="/" className="nav-link active link-light link-menu" aria-current="page"><i className="bi bi-book me-2"></i>UniBook</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link link-light link-menu mr-n1" href="#about">FAQ</a>
+                <Link className="nav-link link-light link-menu mr-n1" to="/faq">FAQ</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link link-light link-menu" href="#promocoes">Solicitações</a>
+                <Link className="nav-link link-light link-menu" to="/relatorios">Relatórios</Link>
               </li>
             </ul>
           </div>
@@ -32,4 +31,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default Navbar;

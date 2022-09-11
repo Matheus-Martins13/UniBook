@@ -2,7 +2,16 @@ import React from 'react';
 import { initializeApp } from "firebase/app";
 import { useState } from "react";
 import { useEffect } from 'react';
-import { collection, getDocs, getFirestore, doc, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  doc,
+  deleteDoc,
+  query,
+  where,
+  QueryConstraint
+} from "firebase/firestore";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyC4-Vuc6Y5Wr8Po2JTJphKZj9o8xaegnF0",
@@ -31,23 +40,39 @@ function Relatorios() {
   }, []);
 
   return (
-    <>
-      <ul>
-        {solicitacoes.map((solicitacao) => {
-          return (
-            <div key={solicitacao.id}>
-              <li>{solicitacao.nome}</li>
-              <li>{solicitacao.id}</li>
-              <li>{solicitacao.descricao}</li>
-              <li>{solicitacao.tipoSolicitacao}</li>
-              <li>{solicitacao.curso}</li>
-              <li>{solicitacao.date}</li>
-              <button onClick={() => deleteSolicitacao(solicitacao.id)}>Apagar solicitacao</button>
-            </div>
-          )
-        })}
-      </ul>
-    </>
+    <div className="container text-start bg-light p-3 w-50">
+      <h1>Relatórios</h1>
+
+      {!solicitacoes[0] && (
+        <div className="alert alert-warning">
+          <h3>Nenhum relatório disponível.</h3>
+          <p>Cadastre solicitações na página inicial para que os relatórios sejam exibidos nesta página!</p>
+        </div>
+      )}
+
+      <div className='alert alert-secondary'>
+        <ol>
+          {solicitacoes.map((solicitacao) => {
+            return (
+              <div key={solicitacao.id} >
+                <li>
+                  <div>Nome: {solicitacao.nome}</div>
+                  <div>E-mail: {solicitacao.email}</div>
+                  <div>Matrícula: {solicitacao.matricula}</div>
+                  <div>Curso: {solicitacao.curso}</div>
+                  <div>Tipo de solicitação: {solicitacao.tipoSolicitacao}</div>
+                  <div>Data e hora da solicitação: {solicitacao.date}</div>
+                  <div>Descrição: {solicitacao.descricao}</div>
+                </li>
+                <button className="btn btn-danger mt-3 mb-4" onClick={() => deleteSolicitacao(solicitacao.id)}>Remover</button>
+              </div>
+            )
+          })}
+        </ol>
+
+      </div>
+
+    </div >
   );
 }
 
