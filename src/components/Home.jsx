@@ -52,7 +52,7 @@ function Home() {
         tipo: 'sugestão',
         protocolo: gerarProtocolo(),
       }
-    } 
+    }
     return {
       class: 'alert alert-warning p-2',
       time: '2',
@@ -62,7 +62,7 @@ function Home() {
   }
 
   return (
-    <div className="container text-start bg-light p-3 w-50 rounded-2">
+    <div className="container text-start bg-light p-3">
       <h1>Suporte Universitário</h1>
 
       <p>Olá, seja bem-vindo à nossa página de suporte! Para abrir uma solicitação preencha o formulário abaixo: </p>
@@ -75,13 +75,13 @@ function Home() {
             <p>A sua <strong>{infoEnvio().tipo}</strong> será respondida em {infoEnvio().time} dias.</p>
           </div>
         }
-        <p><label htmlFor="nome">Nome:</label><br />
+        <p><label htmlFor="nome" className="form-label">Nome:</label><br />
           <input
             type="text"
             value={nome}
             id="nome"
             onChange={(e) => setNome(e.target.value)}
-            className="form-label"
+            className="form-control"
             required
           /></p>
 
@@ -91,6 +91,7 @@ function Home() {
             value={email}
             id="email"
             onChange={(e) => setEmail(e.target.value)}
+            className="form-control"
             required
           /></p>
 
@@ -100,11 +101,12 @@ function Home() {
             value={matricula}
             id="nome"
             onChange={(e) => setMatricula(parseInt(e.target.value))}
+            className="form-control"
             required
           /></p>
 
         <p><label htmlFor="" >Curso:</label> <br />
-          <select name="" id="" onChange={(e) => setCurso(e.target.value)}>
+          <select class="form-select" onChange={(e) => setCurso(e.target.value)}>
             <option value='Administração'>Administração</option>
             <option value='Análise de Sistemas'>Análise de Sistemas</option>
             <option value='Biologia'>Ciências Biológicas</option>
@@ -120,9 +122,8 @@ function Home() {
             value="Reclamação"
             onChange={() => setTipoSolicitacao('Reclamação')}
             name="tipo-solicitacao"
+            className="form-check-input me-5"
           />
-
-          <br />
 
           <label htmlFor="sugestao" className="me-2">Sugestão:</label>
           <input
@@ -130,14 +131,15 @@ function Home() {
             id="sugestao"
             value="Sugestão"
             onChange={() => setTipoSolicitacao('Sugestão')}
-            name="tipo-solicitacao" />
-
+            name="tipo-solicitacao"
+            className="form-check-input"
+          />
         </fieldset>
 
         <br />
-        <p><label htmlFor="">Descrição: </label><br />
-          <textarea name="" id="" cols="20" rows="2" onChange={(e) => setDescricao(e.target.value)}></textarea></p>
-        <button onClick={(event) => criarSolicitacao(event)} className="btn btn-primary mb-3">Enviar</button>
+        <p><label htmlFor="descricao">Descrição: </label><br />
+          <textarea name="" id="descricao" cols="20" rows="2" className="form-control" onChange={(e) => setDescricao(e.target.value)}></textarea></p>
+        <button onClick={(event) => criarSolicitacao(event)} className="btn btn-dark mb-3">Enviar</button>
 
       </form>
 

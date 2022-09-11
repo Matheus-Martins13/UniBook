@@ -36,10 +36,12 @@ function Faq() {
   }, []);
 
   return (
-    <div className="w-50 container">
+    <div className="container bg-light">
+      <h1 className="mt-2 mb-2">FAQ</h1>
+      <p>Confira as principais perguntas e respostas feitas por nossos usuários: </p>
       {faq.map((item) => {
         return (
-          <div className="accordion" id="accordionExample" key={item.id}>
+          <div className="accordion accordion-flush" id="accordionExample" key={item.id}>
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingOne">
                 <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

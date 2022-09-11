@@ -3,7 +3,7 @@ import React from "react";
 function Rodape() {
   return (
 
-    <footer className="border-top fixed-buttom text-light bg-dark w-50 container rounded-2">
+    <footer className="border-top fixed-buttom text-light bg-dark container">
       <div className="container">
         <div className="row py-3">
           <div className="col-12 col-md-4 text-center text-md-start">

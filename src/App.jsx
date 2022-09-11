@@ -10,7 +10,7 @@ import Rodape from './components/Rodape';
 function App() {
 
   return (
-    <div className="bg-secondary">
+    <div>
       <Router>
         <Navbar/>
         <Routes>

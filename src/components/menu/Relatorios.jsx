@@ -49,7 +49,7 @@ function Relatorios() {
   }, []);
 
   return (
-    <div className="container text-start bg-light p-3 w-50">
+    <div className="container text-start bg-light p-3">
       <h1>Relatórios</h1>
 
       <form>
@@ -70,10 +70,10 @@ function Relatorios() {
       )}
 
       {controlador && (
-        <ol>
+        <ol className="alert alert-secondary">
           {solicitacoesFormatadas.map((solicitacao) => {
             return (
-              <div key={solicitacao.id} >
+              <div key={solicitacao.id} className="p-2">
                 <li>
                   <div>Nome: {solicitacao.nome}</div>
                   <div>E-mail: {solicitacao.email}</div>
