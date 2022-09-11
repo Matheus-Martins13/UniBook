@@ -7,11 +7,6 @@ import {
   collection,
   getDocs,
   getFirestore,
-  doc,
-  deleteDoc,
-  query,
-  where,
-  QueryConstraint
 } from "firebase/firestore";
 
 const firebaseApp = initializeApp({
