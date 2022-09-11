@@ -137,7 +137,6 @@ function Home() {
         <br />
         <p><label htmlFor="">Descrição: </label><br />
           <textarea name="" id="" cols="20" rows="2" onChange={(e) => setDescricao(e.target.value)}></textarea></p>
-
         <button onClick={(event) => criarSolicitacao(event)} className="btn btn-primary mb-3">Enviar</button>
 
       </form>

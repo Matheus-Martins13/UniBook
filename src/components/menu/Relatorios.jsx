@@ -22,6 +22,9 @@ const firebaseApp = initializeApp({
 function Relatorios() {
 
   const [solicitacoes, setSolicitacoes] = useState([]);
+  const [tipo, setTipo] = useState('Sugestão');
+  const [solicitacoesFormatadas, setSolicitacoesFormatadas] = useState([]);
+  const [controlador, setControlador] = useState(null);
 
   const db = getFirestore(firebaseApp);
   const solicitacaoCollectionRef = collection(db, 'solicitacoes');
@@ -29,6 +32,15 @@ function Relatorios() {
   async function deleteSolicitacao(id) {
     const solicitacaoDoc = doc(db, 'solicitacoes', id);
     await deleteDoc(solicitacaoDoc);
+  }
+
+  function buscaSolicitacao(e) {
+    e.preventDefault();
+    setControlador(1);
+    const novasSolicitacoes = solicitacoes.filter((solicitacao) => {
+      return solicitacao.tipoSolicitacao === tipo;
+    });
+    return setSolicitacoesFormatadas(novasSolicitacoes);
   }
 
   useEffect(() => {
@@ -43,6 +55,16 @@ function Relatorios() {
     <div className="container text-start bg-light p-3 w-50">
       <h1>Relatórios</h1>
 
+      <form>
+        <p><label htmlFor="" >Filtre os tipos de solicitações: </label> <br />
+          <select className="form-select" aria-label="Default select example" onChange={(e) => setTipo(e.target.value)}>
+            <option value='Sugestão'>Sugestão</option>
+            <option value='Reclamação'>Reclamação</option>
+
+          </select></p>
+        <button className='btn btn-dark mb-5' onClick={(e) => buscaSolicitacao(e)}>Filtrar</button>
+      </form>
+
       {!solicitacoes[0] && (
         <div className="alert alert-warning">
           <h3>Nenhum relatório disponível.</h3>
@@ -50,9 +72,9 @@ function Relatorios() {
         </div>
       )}
 
-      <div className='alert alert-secondary'>
+      {controlador && (
         <ol>
-          {solicitacoes.map((solicitacao) => {
+          {solicitacoesFormatadas.map((solicitacao) => {
             return (
               <div key={solicitacao.id} >
                 <li>
@@ -69,8 +91,7 @@ function Relatorios() {
             )
           })}
         </ol>
-
-      </div>
+      )}
 
     </div >
   );
