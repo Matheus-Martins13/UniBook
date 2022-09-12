@@ -68,13 +68,7 @@ function Home() {
       <p>Olá, seja bem-vindo à nossa página de suporte! Para abrir uma solicitação preencha o formulário abaixo: </p>
 
       <form className="form">
-        {controlador &&
-          <div className={infoEnvio().class}>
-            <h3>Solicitação enviada com sucesso!</h3>
-            <p>O número do seu protocolo é: {infoEnvio().protocolo}</p>
-            <p>A sua <strong>{infoEnvio().tipo}</strong> será respondida em {infoEnvio().time} dias.</p>
-          </div>
-        }
+
         <p><label htmlFor="nome" className="form-label">Nome:</label><br />
           <input
             type="text"
@@ -142,6 +136,14 @@ function Home() {
         <button onClick={(event) => criarSolicitacao(event)} className="btn btn-dark mb-3">Enviar</button>
 
       </form>
+      
+      {controlador &&
+          <div className={infoEnvio().class}>
+            <h3>Solicitação enviada com sucesso!</h3>
+            <p>O número do seu protocolo é: {infoEnvio().protocolo}</p>
+            <p>A sua <strong>{infoEnvio().tipo}</strong> será respondida em {infoEnvio().time} dias.</p>
+          </div>
+        }
 
     </div>
   );
