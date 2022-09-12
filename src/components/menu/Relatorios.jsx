@@ -49,7 +49,7 @@ function Relatorios() {
   }, []);
 
   return (
-    <div className="container text-start bg-light p-3">
+    <div className="container text-start bg-light p-3 relatorios">
       <h1>Relatórios</h1>
 
       <form>
