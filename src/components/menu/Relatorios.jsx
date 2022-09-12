@@ -46,7 +46,7 @@ function Relatorios() {
       setSolicitacoes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
     getSolicitacoes();
-  }, []);
+  },);
 
   return (
     <div className="container text-start bg-light p-3 relatorios">

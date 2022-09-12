@@ -28,7 +28,7 @@ function Faq() {
       setFaq(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
     getFaq();
-  }, []);
+  },);
 
   return (
     <div className="container bg-light">
